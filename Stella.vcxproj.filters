@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{91f6e669-43ff-4be2-a407-0ff5bb47c40e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Collections">
+      <UniqueIdentifier>{1bead551-9ca7-4568-b7ad-bbabc163d60b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Thread">
+      <UniqueIdentifier>{9b102974-2b3e-4ffe-a09a-62a4b73edfbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\IO">
+      <UniqueIdentifier>{f303f33b-9afd-4ff6-98ad-b0672e551a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Reflection">
+      <UniqueIdentifier>{a926e891-9b07-4aad-895c-890c17d315d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Data">
+      <UniqueIdentifier>{7c7016f7-155c-4902-8c91-97b223dc1222}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Int32.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Math.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Typedef.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platform.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Prototype.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Random.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\Array.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Exception.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Delegate.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MulticastDelegate.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ArgumentOutOfRangeException.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\List.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\Map.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\Vector.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\InitializerList.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Memory.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Error.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\String.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ArgumentException.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Source.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Int32.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Math.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Memory.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\String.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Exception.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ArgumentException.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
