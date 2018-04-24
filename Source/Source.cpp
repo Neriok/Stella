@@ -11,14 +11,8 @@ using namespace Stella;
 
 int main()
 {
-	try
-	{
-		throw Exception("AHH");
-	}
-	catch (Exception& ex)
-	{
-		std::wcout << ex.GetMessage().ToWideChar();
-	}
+	String k = "HOLA MUNDO!";
+	std::cout << k;
 
 	getchar();
 	return 0;
