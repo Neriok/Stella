@@ -1,12 +1,2 @@
-﻿  ArgumentException.cpp
-  Exception.cpp
-  Int32.cpp
-  Math.cpp
-  Memory.cpp
-  Source.cpp
-  String.cpp
-c:\users\sistema1\stella\source\string.cpp(55): warning C4244: '=': conversión de 'const Stella::WideChar' a 'Stella::Char'; posible pérdida de datos
-  Generando código...
-c:\users\sistema1\stella\source\exception.cpp(38): warning C4172: devolución de dirección de la variable local o temporal
-  LINK : no se encontró C:\Users\sistema1\Stella\x64\Debug\Stella.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
-  Stella.vcxproj -> C:\Users\sistema1\Stella\x64\Debug\Stella.exe
+﻿  Source.cpp
+  Stella.vcxproj -> C:\Users\Tegamy\Stella\x64\Debug\Stella.exe
