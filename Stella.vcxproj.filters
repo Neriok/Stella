@@ -78,6 +78,12 @@
     <ClInclude Include="Source\ArgumentException.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Source\RemoveReference.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TypeTraits.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Source.cpp">

@@ -13,6 +13,9 @@ using namespace Stella;
 
 int main()
 {
+	std::cout << IsVoidType<void>::Value << std::endl;
+	std::cout << IsVoidType<const void>::Value << std::endl;
+
 
 	String n = "Hola mundo!";
 	

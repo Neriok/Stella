@@ -147,8 +147,10 @@
     <ClInclude Include="Source\Platform.h" />
     <ClInclude Include="Source\Prototype.h" />
     <ClInclude Include="Source\Random.h" />
+    <ClInclude Include="Source\RemoveReference.h" />
     <ClInclude Include="Source\String.h" />
     <ClInclude Include="Source\Typedef.h" />
+    <ClInclude Include="Source\TypeTraits.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\ArgumentException.cpp" />
