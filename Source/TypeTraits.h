@@ -15,7 +15,7 @@ namespace Stella
 	template <> struct           IsVoidType <const volatile void> { enum { Value = true  }; };
 
 	/*-----------------------------------------------------------------------
-								  IsBooleanType
+	                             IsBooleanType
 	-----------------------------------------------------------------------*/
 
 	template <typename T> struct IsBooleanType        { enum { Value = false }; };
