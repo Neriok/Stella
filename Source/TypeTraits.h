@@ -22,7 +22,7 @@ namespace Stella
 	template <> struct           IsBooleanType <bool> { enum { Value = true  }; };
 
 	/*-----------------------------------------------------------------------
-								   IsCharType
+	                               IsCharType
 	-----------------------------------------------------------------------*/
 
 	template <typename T> struct IsCharType            { enum { Value = false }; };
@@ -30,7 +30,7 @@ namespace Stella
 	template <> struct           IsCharType <WideChar> { enum { Value = true  }; };
 
 	/*-----------------------------------------------------------------------
-							      IsNumericType
+	                              IsNumericType
 	-----------------------------------------------------------------------*/
 
 	template <typename T> struct IsNumericType     { enum { Value = false }; };
@@ -99,7 +99,7 @@ namespace Stella
 	template <typename T> struct RemoveReference<T&&> { typedef T Type; };
 
 	/*-----------------------------------------------------------------------
-								    IsFunction
+	                               IsFunctionType
 	-----------------------------------------------------------------------*/
 
 	template <typename T> 
@@ -115,7 +115,7 @@ namespace Stella
 	};
 
 	/*-----------------------------------------------------------------------
-							        IsEnumType
+	                                IsEnumType
 	-----------------------------------------------------------------------*/
 	 
 	template <typename T>
@@ -125,7 +125,7 @@ namespace Stella
 	};
 
 	/*-----------------------------------------------------------------------
-								IsZeroConstructType
+	                            IsZeroConstructType
 	-----------------------------------------------------------------------*/
 
 	template <typename T>
