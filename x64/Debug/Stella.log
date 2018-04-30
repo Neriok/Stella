@@ -1,3 +1,2 @@
 ﻿  Source.cpp
-c:\users\tegamy\stella\source\source.cpp(23): warning C4834: discarding return value of function with 'nodiscard' attribute
   Stella.vcxproj -> C:\Users\Tegamy\Stella\x64\Debug\Stella.exe

@@ -33,7 +33,7 @@ namespace Stella
 	typedef UInt16				Char16;   // 16-bit character type
 	typedef UInt32				Char32;   // 32-bit character type
 
-	// Size types. Change according the architecture
+	// Size types. Changes according the architecture
 	#if STELLA_ARCHITECTURE_TYPE == ARCHITECTURE_x86_32
 
 	typedef UInt32 Size;

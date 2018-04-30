@@ -84,6 +84,9 @@
     <ClInclude Include="Source\TypeTraits.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Dev.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Source.cpp">
