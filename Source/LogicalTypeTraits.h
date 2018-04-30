@@ -63,32 +63,6 @@ namespace Stella
 		enum { Value = false };
 	};
 
-	template <typename... Types>
-	struct TOr;
-
-	template <bool LHSValue, typename... RHS>
-	struct TOrValue
-	{
-		enum { Value = TOr<RHS...>::Value };
-	};
-
-	template <typename... RHS>
-	struct TOrValue<true, RHS...>
-	{
-		enum { Value = true };
-	};
-
-	template <typename LHS, typename... RHS>
-	struct TOr<LHS, RHS...> : TOrValue<LHS::Value, RHS...>
-	{
-	};
-
-	template <>
-	struct TOr<>
-	{
-		enum { Value = false };
-	};
-
 	/*-----------------------------------------------------------------------
 									  Not
 	-----------------------------------------------------------------------*/

@@ -47,11 +47,30 @@ namespace Stella
 	template <> struct IsNumericType <Int64>       { enum { Value = true  }; };
 
 	/*-----------------------------------------------------------------------
-	                                IsSameType
+	*                               IsSameType
 	-----------------------------------------------------------------------*/
 
 	template <typename A, typename B> struct IsSameType       { enum { Value = false }; };
 	template <typename T>             struct IsSameType<T, T> { enum { Value = true  }; };
+
+	/*-----------------------------------------------------------------------
+	                                ChooseType
+	-----------------------------------------------------------------------*/
+	
+	template <bool Condition, typename TConsecuent, typename TAlternative>
+	struct ChooseType;
+
+	template <typename TConsecuent, typename TAlternative>
+	struct ChooseType <true, TConsecuent, TAlternative>
+	{
+		typedef TConsecuent Result;
+	};
+
+	template <typename TConsecuent, typename TAlternative>
+	struct ChooseType <false, TConsecuent, TAlternative>
+	{
+		typedef TAlternative Result;
+	};
 
 	/*-----------------------------------------------------------------------
 	                               IsPointerType
@@ -133,9 +152,6 @@ namespace Stella
 	{
 		enum { Value = Or<IsEnumType<T>, IsCharType<T>, IsNumericType<T>, IsPointerType<T>>::Value };
 	};
-
-	
-
 
 }
 

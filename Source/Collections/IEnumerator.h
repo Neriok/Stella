@@ -8,7 +8,7 @@ namespace Stella::Collections
 	public:
 		virtual ~IEnumerator() {}
 		virtual bool MoveNext() = 0;
-		virtual T&   GetCurrent() = 0;
+		virtual T&   GetCurrent() const = 0;
 		virtual void Reset() = 0;
 	};
 }

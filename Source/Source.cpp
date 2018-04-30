@@ -13,9 +13,9 @@
 
 using namespace Stella;
 
-
 int main()
 {
+	
 
 	getchar();
 	return 0;

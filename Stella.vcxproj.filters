@@ -54,9 +54,6 @@
     <ClInclude Include="Source\ArgumentOutOfRangeException.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Collections\List.h">
-      <Filter>Source\Collections</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Collections\Map.h">
       <Filter>Source\Collections</Filter>
     </ClInclude>
@@ -85,6 +82,18 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Source\Dev.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\ICollection.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\IEnumerable.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\IEnumerator.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Allocator.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

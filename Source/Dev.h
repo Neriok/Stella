@@ -2,6 +2,7 @@
 
 #include "Typedef.h"
 #include "TypeTraits.h"
+#include "Collections/ICollection.h"
 #include <initializer_list>
 
 using namespace Stella;
@@ -10,7 +11,7 @@ using namespace Stella::Collections;
 namespace Development
 {
 	template <typename T, typename TAllocator>
-	class Vector //: public ICollection<T>
+	class Vector : public ICollection<T>
 	{
 		/*-----------------------------------------------------------------------
 		                                 Fields
@@ -26,16 +27,33 @@ namespace Development
 		-----------------------------------------------------------------------*/	
 	public:
 
+		/**
+		* @resume Initializes a new empty instance of Vector<T>.
+		*/
 		Vector()
 			: count(0), capacity(0)
 		{
-			// ...
 		}
 
-		//Vector(Int32 capacity);
-		//Vector(const Vector& other);
-		//Vector(const T* pointer, Int32 count);
-		//Vector(std::initializer_list<T> initializer);
+		Vector(Int32 capacity)
+		{
+
+		}
+
+		Vector(const Vector& other)
+		{
+
+		}
+
+		Vector(const T* pointer, Int32 count)
+		{
+
+		}
+
+		Vector(std::initializer_list<T> initializer)
+		{
+
+		}
 		
 		~Vector()
 		{
@@ -46,26 +64,86 @@ namespace Development
 		-----------------------------------------------------------------------*/
 	public:
 		
-		Int32 GetCount() const
+		/**
+		   @resume Returns the number of elements contained in the Vector<T>.
+		*/
+		Int32 Count() const
 		{
 			return count;
 		}
 
-	//	virtual Int32  GetCapacity() const;
-	//	void   SetCapacity(Int32 capacity);
-	//	Int32  Add(const T& element);
-	//	Int32  Add(T&& element);
-	//	void   Insert(Int32 index, const T& element);
-	//	void   Insert(Int32 index, T&& element);
-	//	bool   Remove(const T& element);
-	//	bool   RemoveAt(Int32 index);
-	//	Int32  RemoveAll(/* Predicate<T> predicate*/);
-	//	void   Clear();
+		/**
+		   @resume Gets the internal capacity that the Vector<T> can contain before 
+		           rezising is requiered.
+		*/
+		Int32 GetCapacity() const
+		{
+			return capacity;
+		}
 
-	//private:
+		/**
+		   @resume Sets the internal capacity that the Vector<T> can contain before 
+		           rezising is requiered.
+		   @param  Capacity Number of elements that the Vector<T> can contain.
+		   @throws ArgumentOutOfRangeException, OutOfMemoryException
+		*/
+		void SetCapacity(Int32 capacity)
+		{
 
-	//	template <typename ... TArguments>
-	//	Int32 Emplace(TArguments&& ... arguments);
+		}
+
+		Int32 Add(const T& element)
+		{
+			return 0;
+		}
+
+		Int32 Add(T&& element)
+		{
+			return 0;
+		}
+
+		void Insert(Int32 index, const T& element)
+		{
+			
+		}
+
+		void Insert(Int32 index, T&& element)
+		{
+			
+		}
+		
+		bool Remove(const T& element)
+		{
+			return false;
+		}
+
+		bool RemoveAt(Int32 index)
+		{
+			return false;
+		}
+
+		Int32 RemoveAll(/* Predicate<T> predicate*/) 
+		{
+			return 0;
+		}
+		
+		void Clear()
+		{
+
+		}
+
+		Int32 Contains(const T& element) const
+		{
+			return 0;
+		}
+
+	private:
+
+		template <typename ... TArguments>
+		Int32 Emplace(TArguments&& ... arguments)
+		{
+			return NULL;
+		}
 
 		/*-----------------------------------------------------------------------
 		                                Operators
@@ -84,5 +162,70 @@ namespace Development
 		Vector& operator+=(const Vector& other);
 		Vector& operator+=(Vector&& other);
 		Vector& operator+=(std::initializer_list<T> initializer);*/
+
+		/*-----------------------------------------------------------------------
+		                               IEnumerable
+		-----------------------------------------------------------------------*/
+		public:
+
+		IEnumerator<T>& GetEnumerator() const
+		{
+			return VectorEnumerator(this);
+		}
+
+		/*-----------------------------------------------------------------------
+		                             VectorEnumerator
+		-----------------------------------------------------------------------*/
+		private:
+
+		class VectorEnumerator : IEnumerator<T> 
+		{
+		private:
+
+			Vector<T, TAllocator>& vector;
+			Int32 index;
+			Int32 version;
+
+		public:
+
+			VectorEnumerator(const Vector<T, TAllocator>& vector)
+				: vector(vector), index(0), version(vector.count)
+			{
+			}
+
+			bool MoveNext()
+			{
+				if ((version == vector.count) && (index < vector.count))
+				{
+					index++;
+					return true;
+				}
+
+				if (version != vector.count)
+				{
+					// @todo throw InvalidOperationException
+				}
+				index = vector.count + 1;
+				return false;
+			}
+
+			T& GetCurrent() const
+			{
+				if (index == 0 || index == vector.count + 1)
+				{
+					// @todo throw InvalidOperationException
+				}				
+				return vector[index - 1];
+			}
+
+			void Reset()
+			{
+				if (version != vector.count)
+				{
+					// @todo throw InvalidOperationException
+				}
+				index = 0;
+			}
+		};
 	};
 }

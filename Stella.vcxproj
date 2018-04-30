@@ -130,11 +130,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Allocator.h" />
     <ClInclude Include="Source\ArgumentException.h" />
     <ClInclude Include="Source\ArgumentOutOfRangeException.h" />
     <ClInclude Include="Source\Collections\Array.h" />
+    <ClInclude Include="Source\Collections\ICollection.h" />
+    <ClInclude Include="Source\Collections\IEnumerable.h" />
+    <ClInclude Include="Source\Collections\IEnumerator.h" />
     <ClInclude Include="Source\Collections\InitializerList.h" />
-    <ClInclude Include="Source\Collections\List.h" />
     <ClInclude Include="Source\Collections\Map.h" />
     <ClInclude Include="Source\Collections\Vector.h" />
     <ClInclude Include="Source\Delegate.h" />
