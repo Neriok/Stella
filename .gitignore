@@ -1,2 +1,7 @@
 .vs/
 vs/
+x64/
+x86/
+x32/
+Debug/
+Release/

@@ -2,8 +2,10 @@
 
 #include "Typedef.h"
 #include "TypeTraits.h"
+#include "Collections/Array.h"
 #include "Collections/ICollection.h"
-#include <initializer_list>
+#include <exception.h>
+//#include <initializer_list>
 
 using namespace Stella;
 using namespace Stella::Collections;
@@ -18,8 +20,8 @@ namespace Development
 		-----------------------------------------------------------------------*/
 	private:
 		
-		TAllocator allocator;
-		Int32 count;
+		TAllocator allocator; 
+		Int32 count;   
 		Int32 capacity;
 
 		/*-----------------------------------------------------------------------
@@ -28,33 +30,65 @@ namespace Development
 	public:
 
 		/**
-		* @resume Initializes a new empty instance of Vector<T>.
+		   @resume Initializes a new empty Vector<T> instance.
 		*/
 		Vector()
 			: count(0), capacity(0)
 		{
 		}
 
+		/**
+		   @resume Initializes a new Vector<T> instance with the given capacity.
+		   @param  Capacity Initial capacity.
+		*/
 		Vector(Int32 capacity)
 		{
 
 		}
 
+		/**
+		   @resume Initializes a new Vector<T> instance that contains elements copied from other Vector<T>.
+		   @param  Other Instance to copty.
+		*/
 		Vector(const Vector& other)
 		{
 
 		}
 
+		
+
+		/**
+		@resume Initializes a new Vector<T> instance with a raw array of elements.
+		@param  Pointer Address of the first element.
+		@param  Count   Number of elements contained in the array.
+		*/
+		Vector(const Array<T, 10> array)
+		{
+			std::cout << "Hola!";
+		}
+
+		/**
+		   @resume Initializes a new Vector<T> instance with a raw array of elements.
+		   @param  Pointer Address of the first element.
+		   @param  Count   Number of elements contained in the array.
+		*/
 		Vector(const T* pointer, Int32 count)
 		{
 
 		}
 
-		Vector(std::initializer_list<T> initializer)
+		/**
+		  @resume Initializes a new Vector<T> instance that adds elements contained in the initializer list. 
+		  @param  InitializerList Elements to add.
+		*/
+		Vector(std::initializer_list<T> initializerList)
 		{
 
 		}
 		
+		/**
+		   @resume Destroys the Vector<T> instance.	
+		*/
 		~Vector()
 		{
 		}
@@ -168,21 +202,20 @@ namespace Development
 		-----------------------------------------------------------------------*/
 		public:
 
-		IEnumerator<T>& GetEnumerator() const
-		{
-			return VectorEnumerator(this);
+		IEnumerator<T> GetEnumerator() const
+		{		
+			return VectorEnumerator(*this);
 		}
 
 		/*-----------------------------------------------------------------------
 		                             VectorEnumerator
 		-----------------------------------------------------------------------*/
-		private:
-
-		class VectorEnumerator : IEnumerator<T> 
+		
+		class VectorEnumerator : public IEnumerator<T> 
 		{
 		private:
 
-			Vector<T, TAllocator>& vector;
+			const Vector<T, TAllocator>& vector;
 			Int32 index;
 			Int32 version;
 
@@ -206,6 +239,7 @@ namespace Development
 					// @todo throw InvalidOperationException
 				}
 				index = vector.count + 1;
+				std::cout << "Hola";
 				return false;
 			}
 
@@ -215,7 +249,9 @@ namespace Development
 				{
 					// @todo throw InvalidOperationException
 				}				
-				return vector[index - 1];
+				throw std::exception();
+				//return vector[index - 1];
+				//return ((T&)((T*)0));
 			}
 
 			void Reset()
