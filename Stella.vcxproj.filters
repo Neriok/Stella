@@ -19,6 +19,9 @@
     <Filter Include="Source\Data">
       <UniqueIdentifier>{7c7016f7-155c-4902-8c91-97b223dc1222}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Memory">
+      <UniqueIdentifier>{397c4cf9-a9c3-404e-956d-24cfee2daef7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Int32.h">
@@ -94,6 +97,18 @@
       <Filter>Source\Collections</Filter>
     </ClInclude>
     <ClInclude Include="Source\Allocator.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SharedPointer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\WeakPointer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UniquePointer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SharedReference.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

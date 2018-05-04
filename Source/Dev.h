@@ -55,8 +55,6 @@ namespace Development
 
 		}
 
-		
-
 		/**
 		@resume Initializes a new Vector<T> instance with a raw array of elements.
 		@param  Pointer Address of the first element.
@@ -202,9 +200,9 @@ namespace Development
 		-----------------------------------------------------------------------*/
 		public:
 
-		IEnumerator<T> GetEnumerator() const
+		IEnumerator<T>* GetEnumerator() const
 		{		
-			return VectorEnumerator(*this);
+			return new VectorEnumerator(*this);
 		}
 
 		/*-----------------------------------------------------------------------

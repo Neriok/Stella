@@ -152,9 +152,13 @@
     <ClInclude Include="Source\Prototype.h" />
     <ClInclude Include="Source\Random.h" />
     <ClInclude Include="Source\RemoveReference.h" />
+    <ClInclude Include="Source\SharedPointer.h" />
+    <ClInclude Include="Source\SharedReference.h" />
     <ClInclude Include="Source\String.h" />
     <ClInclude Include="Source\Typedef.h" />
     <ClInclude Include="Source\TypeTraits.h" />
+    <ClInclude Include="Source\UniquePointer.h" />
+    <ClInclude Include="Source\WeakPointer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\ArgumentException.cpp" />

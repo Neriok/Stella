@@ -8,6 +8,6 @@ namespace Stella::Collections
 	{
 	public:
 		virtual ~IEnumerable() {}
-		virtual IEnumerator<T> GetEnumerator() const = 0;
+		virtual IEnumerator<T>* GetEnumerator() const = 0;
 	};
 }
