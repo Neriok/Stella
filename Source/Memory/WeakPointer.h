@@ -1,9 +1,9 @@
 #pragma once
 
-namespace Stella
+namespace Stella::Memory
 {
 	template <typename T>
-	class UniquePointer
+	class WeakPointer
 	{
 
 	};

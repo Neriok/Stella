@@ -7,9 +7,6 @@
     <Filter Include="Source\Collections">
       <UniqueIdentifier>{1bead551-9ca7-4568-b7ad-bbabc163d60b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Thread">
-      <UniqueIdentifier>{9b102974-2b3e-4ffe-a09a-62a4b73edfbc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\IO">
       <UniqueIdentifier>{f303f33b-9afd-4ff6-98ad-b0672e551a9b}</UniqueIdentifier>
     </Filter>
@@ -21,6 +18,9 @@
     </Filter>
     <Filter Include="Source\Memory">
       <UniqueIdentifier>{397c4cf9-a9c3-404e-956d-24cfee2daef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Thread">
+      <UniqueIdentifier>{9b102974-2b3e-4ffe-a09a-62a4b73edfbc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +78,6 @@
     <ClInclude Include="Source\ArgumentException.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\RemoveReference.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="Source\TypeTraits.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -96,19 +93,22 @@
     <ClInclude Include="Source\Collections\IEnumerator.h">
       <Filter>Source\Collections</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Allocator.h">
-      <Filter>Source</Filter>
+    <ClInclude Include="Source\Memory\SharedReference.h">
+      <Filter>Source\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SharedPointer.h">
-      <Filter>Source</Filter>
+    <ClInclude Include="Source\Memory\UniquePointer.h">
+      <Filter>Source\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="Source\WeakPointer.h">
-      <Filter>Source</Filter>
+    <ClInclude Include="Source\Memory\WeakPointer.h">
+      <Filter>Source\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UniquePointer.h">
-      <Filter>Source</Filter>
+    <ClInclude Include="Source\Memory\SharedPointer.h">
+      <Filter>Source\Memory</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SharedReference.h">
+    <ClInclude Include="Source\Memory\Allocator.h">
+      <Filter>Source\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Number.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -132,6 +132,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\ArgumentException.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Number.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

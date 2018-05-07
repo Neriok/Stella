@@ -1,5 +1,8 @@
 #pragma once
 #include "IEnumerator.h"
+#include "Memory/SharedPointer.h"
+
+using namespace Stella::Memory;
 
 namespace Stella::Collections
 {
@@ -8,6 +11,6 @@ namespace Stella::Collections
 	{
 	public:
 		virtual ~IEnumerable() {}
-		virtual IEnumerator<T>* GetEnumerator() const = 0;
+		virtual SharedPointer<IEnumerator<T>> GetEnumerator() const = 0;
 	};
 }

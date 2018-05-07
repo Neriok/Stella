@@ -1,7 +1,7 @@
 #pragma once
 #include "Typedef.h"
 
-namespace Stella
+namespace Stella::Memory
 {
 	class Allocator
 	{

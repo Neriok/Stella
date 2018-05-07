@@ -5,7 +5,7 @@
 namespace Stella
 {
 	/*-----------------------------------------------------------------------
-	                               IsVoidType
+	                                IsVoidType
 	-----------------------------------------------------------------------*/
 
 	template <typename T> struct IsVoidType                       { enum { Value = false }; };
@@ -15,7 +15,7 @@ namespace Stella
 	template <> struct           IsVoidType <const volatile void> { enum { Value = true  }; };
 
 	/*-----------------------------------------------------------------------
-	                             IsBooleanType
+	                              IsBooleanType
 	-----------------------------------------------------------------------*/
 
 	template <typename T> struct IsBooleanType        { enum { Value = false }; };
@@ -110,6 +110,13 @@ namespace Stella
 	template<typename T> struct IsRValueReferenceType<T&&> { enum { Value = true  }; };
 
 	/*-----------------------------------------------------------------------
+	                               AddReference
+	-----------------------------------------------------------------------*/
+
+	template <typename T> struct AddReference        { typedef T& Type;   };
+	template <>           struct AddReference <void> { typedef void Type; };
+
+	/*-----------------------------------------------------------------------
 	                              RemoveReference
 	-----------------------------------------------------------------------*/
 
@@ -118,7 +125,7 @@ namespace Stella
 	template <typename T> struct RemoveReference<T&&> { typedef T Type; };
 
 	/*-----------------------------------------------------------------------
-	                               IsFunctionType
+	                              IsFunctionType
 	-----------------------------------------------------------------------*/
 
 	template <typename T> 

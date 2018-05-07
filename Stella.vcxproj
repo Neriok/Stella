@@ -130,7 +130,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Allocator.h" />
     <ClInclude Include="Source\ArgumentException.h" />
     <ClInclude Include="Source\ArgumentOutOfRangeException.h" />
     <ClInclude Include="Source\Collections\Array.h" />
@@ -147,18 +146,19 @@
     <ClInclude Include="Source\Int32.h" />
     <ClInclude Include="Source\Math.h" />
     <ClInclude Include="Source\Memory.h" />
+    <ClInclude Include="Source\Memory\Allocator.h" />
+    <ClInclude Include="Source\Memory\SharedPointer.h" />
+    <ClInclude Include="Source\Memory\SharedReference.h" />
+    <ClInclude Include="Source\Memory\UniquePointer.h" />
+    <ClInclude Include="Source\Memory\WeakPointer.h" />
     <ClInclude Include="Source\MulticastDelegate.h" />
+    <ClInclude Include="Source\Number.h" />
     <ClInclude Include="Source\Platform.h" />
     <ClInclude Include="Source\Prototype.h" />
     <ClInclude Include="Source\Random.h" />
-    <ClInclude Include="Source\RemoveReference.h" />
-    <ClInclude Include="Source\SharedPointer.h" />
-    <ClInclude Include="Source\SharedReference.h" />
     <ClInclude Include="Source\String.h" />
     <ClInclude Include="Source\Typedef.h" />
     <ClInclude Include="Source\TypeTraits.h" />
-    <ClInclude Include="Source\UniquePointer.h" />
-    <ClInclude Include="Source\WeakPointer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\ArgumentException.cpp" />
@@ -166,6 +166,7 @@
     <ClCompile Include="Source\Int32.cpp" />
     <ClCompile Include="Source\Math.cpp" />
     <ClCompile Include="Source\Memory.cpp" />
+    <ClCompile Include="Source\Number.cpp" />
     <ClCompile Include="Source\Source.cpp" />
     <ClCompile Include="Source\String.cpp" />
   </ItemGroup>

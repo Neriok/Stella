@@ -5,10 +5,12 @@
 #include "Collections/Array.h"
 #include "Collections/ICollection.h"
 #include <exception.h>
+#include "Memory/SharedPointer.h"
 //#include <initializer_list>
 
 using namespace Stella;
 using namespace Stella::Collections;
+using namespace Stella::Memory;
 
 namespace Development
 {
@@ -200,9 +202,9 @@ namespace Development
 		-----------------------------------------------------------------------*/
 		public:
 
-		IEnumerator<T>* GetEnumerator() const
+		SharedPointer<IEnumerator<T>> GetEnumerator() const
 		{		
-			return new VectorEnumerator(*this);
+			return SharedPointer<IEnumerator<T>>((IEnumerator<T>*) (new VectorEnumerator(*this)));
 		}
 
 		/*-----------------------------------------------------------------------
