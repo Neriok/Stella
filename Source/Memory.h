@@ -9,7 +9,7 @@ using namespace Stella;
 
 #define PAD_ALIGN 16
 
-class Memory
+class MemoryF
 {
 private:
 #ifdef REVERSE_DEBUG_ENABLED
@@ -36,12 +36,12 @@ class DefaultAllocator
 {
 	inline static void* Allocation(Size memory)
 	{
-		return Memory::StaticAllocation(memory, false);
+		return MemoryF::StaticAllocation(memory, false);
 	}
 
 	inline static void Free(void* pointer)
 	{
-		return Memory::StaticFree(pointer, false);
+		return MemoryF::StaticFree(pointer, false);
 	}
 };
 

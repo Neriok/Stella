@@ -9,7 +9,7 @@
 
 void* operator new(Size size, const Char* description)
 {
-	return Memory::StaticAllocation(size, false);
+	return MemoryF::StaticAllocation(size, false);
 }
 
 void* operator new(Size size, void* (*alloc_func)(Size size))
@@ -22,13 +22,13 @@ void* operator new(Size size, void* (*alloc_func)(Size size))
 // ----------------------------------------------------------------------
 
 #ifdef REVERSE_DEBUG_ENABLED
-Size Memory::_memory_usage = 0;
-Size Memory::_max_usage = 0;
+Size MemoryF::_memory_usage = 0;
+Size MemoryF::_max_usage = 0;
 #endif
 
-Size Memory::_allocation_count = 0;
+Size MemoryF::_allocation_count = 0;
 
-void * Memory::StaticAllocation(Size bytes, Boolean pad_align)
+void * MemoryF::StaticAllocation(Size bytes, Boolean pad_align)
 {
 #ifdef REVERSE_DEBUG_ENABLED
 	Boolean prepad = true;
@@ -37,7 +37,7 @@ void * Memory::StaticAllocation(Size bytes, Boolean pad_align)
 #endif // REVERSE_DEBUG_ENABLED
 
 	void* memory = malloc(bytes + (prepad? PAD_ALIGN : 0));
-	Memory::_allocation_count++;
+	MemoryF::_allocation_count++;
 
 	ERR_NULL_ARGUMENT_RETURN(memory, NULL);
 
@@ -50,11 +50,11 @@ void * Memory::StaticAllocation(Size bytes, Boolean pad_align)
 		
 #ifdef REVERSE_DEBUG_ENABLED
 
-		Memory::_memory_usage += bytes;
+		MemoryF::_memory_usage += bytes;
 
-		if (Memory::_memory_usage > Memory::_max_usage)
+		if (MemoryF::_memory_usage > MemoryF::_max_usage)
 		{
-			Memory::_max_usage = Memory::_memory_usage;
+			MemoryF::_max_usage = MemoryF::_memory_usage;
 		}		
 
 #endif // REVERSE_DEBUG_ENABLED
@@ -69,11 +69,11 @@ void * Memory::StaticAllocation(Size bytes, Boolean pad_align)
 
 
 
-void* Memory::StaticReallocation(void* pointer, Size bytes, Boolean pad_align)
+void* MemoryF::StaticReallocation(void* pointer, Size bytes, Boolean pad_align)
 {
 	if (pointer == NULL)
 	{
-		return Memory::StaticAllocation(bytes, pad_align);
+		return MemoryF::StaticAllocation(bytes, pad_align);
 	}
 
 	UInt8* memory = (UInt8*)pointer;
@@ -131,7 +131,7 @@ void* Memory::StaticReallocation(void* pointer, Size bytes, Boolean pad_align)
 	}
 }
 
-void Memory::StaticFree(void* pointer, bool pad_align)
+void MemoryF::StaticFree(void* pointer, bool pad_align)
 {
 	if (pointer == NULL)
 	{
@@ -153,7 +153,7 @@ void Memory::StaticFree(void* pointer, bool pad_align)
 
 #ifdef REVERSE_DEBUG_ENABLED
 		UInt64* size = (UInt64*)memory;
-		Memory::_memory_usage -= *size;
+		MemoryF::_memory_usage -= *size;
 #endif
 		free(memory);
 	}
@@ -163,16 +163,16 @@ void Memory::StaticFree(void* pointer, bool pad_align)
 	}
 }
 
-Size Memory::GetMemoryAvailable()
+Size MemoryF::GetMemoryAvailable()
 {
 	return 0;
 }
 
-Size Memory::GetMemoryUsage()
+Size MemoryF::GetMemoryUsage()
 {
 #ifdef REVERSE_DEBUG_ENABLED
 
-	return Memory::_memory_usage;
+	return MemoryF::_memory_usage;
 
 #else 
 
@@ -181,11 +181,11 @@ Size Memory::GetMemoryUsage()
 #endif
 }
 
-Size Memory::GetMemoryMaxUsage()
+Size MemoryF::GetMemoryMaxUsage()
 {
 #ifdef REVERSE_DEBUG_ENABLED
 
-	return Memory::_max_usage;
+	return MemoryF::_max_usage;
 
 #else 
 
@@ -194,7 +194,7 @@ Size Memory::GetMemoryMaxUsage()
 #endif
 }
 
-Size Memory::GetAllocationCount()
+Size MemoryF::GetAllocationCount()
 {
 	return _allocation_count;
 }

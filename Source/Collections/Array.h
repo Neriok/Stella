@@ -1,109 +1,125 @@
 #pragma once
 #include "Typedef.h"
+#include "IEnumerable.h"
+#include <initializer_list>
 
 namespace Stella::Collections
 {
-	template <class T, UInt32 Size>
-	class Array
+	template <class T, Size N>
+	class Array : public IEnumerable<T>
 	{
-		// ----------------------------------------------------------------------
-		// -- Fields
-		// ----------------------------------------------------------------------
-
+		/*-----------------------------------------------------------------------
+		                                 Fields
+		-----------------------------------------------------------------------*/
 	public:
 
-		T elements[Size];
+		T elements[N];
 
-		// ----------------------------------------------------------------------
-		// -- Methods
-		// ----------------------------------------------------------------------
-
+		/*-----------------------------------------------------------------------
+		                       Constructors & Destructors
+		-----------------------------------------------------------------------*/	
 	public:
 
-		Boolean IsEmpty() const
+		Array(std::initializer_list<T> initializerList)
+		{
+			if (initializerList.size() != N)
+			{
+				//@todo throw ArgumentOutOfRangeException
+				return;
+			}
+			for (int i = 0; i < N; i++)
+			{
+				elements[i] = *(initializerList.begin() + i);
+			}
+		}
+				
+		/*-----------------------------------------------------------------------
+		                                 Methods
+		-----------------------------------------------------------------------*/
+	public:
+
+		bool IsEmpty() const
 		{
 			return false;
 		}
 
-		UInt32 GetSize() const
+		Size Count() const
 		{
-			return Size;
+			return N;
 		}
 		
 		T* Begin()
 		{
-			return this->elements;
+			return elements;
 		}
 
 		const T* Begin() const
 		{
-			return this->elements;
+			return elements;
 		}
 
 		T* End()
 		{
-			return this->elements + Size;
+			return elements + N;
 		}
 
 		const T* End() const
 		{
-			return this->elements + Size;
+			return elements + N;
 		}
 
 		T& Front()
 		{
-			return this->elements[0];
+			return elements[0];
 		}
 
 		const T& Front() const
 		{
-			return this->elements[0];
+			return elements[0];
 		}
 
 		T& Back()
 		{
-			return this->elements[Size - 1];
+			return elements[N - 1];
 		}
 
 		const T& Back() const
 		{
-			return this->elements[Size - 1];
+			return elements[N - 1];
 		}
 
 		void Fill(const T& value)
 		{
-			for (int i = 0; i < Size; i++)
+			for (int i = 0; i < N; i++)
 			{
 				elements[i] = value;
 			}
 		}
 
-		void Swap(const Array<T, Size> other)
+		void Swap(const Array<T, N> other)
 		{
-			for (int i = 0; i < Size; i++)
+			for (int i = 0; i < N; i++)
 			{
-				// ...			
-
+				// ...	
 			}
 		}
 
-		// ----------------------------------------------------------------------
-		// -- Operators
-		// ----------------------------------------------------------------------
-
+		/*-----------------------------------------------------------------------
+		                                Operators
+		-----------------------------------------------------------------------*/
 	public:
 
-		T& operator[](UInt32 index) 
+		T& operator[](Size index) 
 		{
 			return elements[index];
 		}
 
-		const T& operator[](UInt32 index) const
+		const T& operator[](Size index) const
 		{
 			return elements[index];
 		}
 
-		Boolean operator==(Array<T, Size>& other)
+		bool operator==(Array<T, N>& other)
 		{
 			T* b1 = Begin();
 			T* b2 = other.Begin();
@@ -119,12 +135,12 @@ namespace Stella::Collections
 			return true;
 		}
 
-		Boolean operator!=(Array<T, Size>& other)
+		bool operator!=(Array<T, N>& other)
 		{
 			return !(operator==(other));
 		}
 
-		Boolean operator<(Array<T, Size>& other)
+		bool operator<(Array<T, N>& other)
 		{
 			T* b1 = Begin();
 			T* b2 = other.Begin();
@@ -138,20 +154,75 @@ namespace Stella::Collections
 			return false;
 		}
 
-		Boolean operator<=(Array<T, Size>& other)
+		bool operator<=(Array<T, N>& other)
 		{
 			return !(other < *this);
 		}
 
-		Boolean operator>(Array<T, Size>& other)
+		bool operator>(Array<T, N>& other)
 		{
 			return other < *this;
 		}
 
-		Boolean operator>=(Array<T, Size>& other)
+		bool operator>=(Array<T, N>& other)
 		{
 			return !(*this < other);
 		}
+
+		/*-----------------------------------------------------------------------
+		                               IEnumerable
+		-----------------------------------------------------------------------*/
+	public:
+
+		SharedPointer<IEnumerator<T>> GetEnumerator() const
+		{
+			return SharedPointer<IEnumerator<T>>((IEnumerator<T>*) new ArrayEnumerator(*this));
+		}
+
+		/*-----------------------------------------------------------------------
+		                              ArrayEnumerator
+		-----------------------------------------------------------------------*/
+	private:
+
+		class ArrayEnumerator : IEnumerator<T>
+		{
+		private:
+			
+			Int32 index;
+			Array<T, N> array;
+
+		public:
+
+			ArrayEnumerator(const Array<T, N>& array)
+				: array(array), index(0)
+			{
+			}
+
+			bool MoveNext()
+			{
+				if (index < N)
+				{
+					index++;
+					return true;
+				}
+				index = N + 1;
+				return false;
+			}
+
+			const T& GetCurrent() const
+			{
+				if (index == 0 || index == N + 1)
+				{
+					// @todo throw InvalidOperationException
+				}
+				return array[index - 1];
+			}					
+
+			void Reset()
+			{
+				index = 0;
+			}
+		};
 	};
 
 	template<class T>
@@ -159,15 +230,14 @@ namespace Stella::Collections
 	{
 	public:
 
-		Boolean IsEmpty() const
+		bool IsEmpty() const
 		{
 			return true;
 		}
 
-		UInt32 GetSize() const
+		Size GetSize() const
 		{
 			return 0;
 		}
-
 	};
 }

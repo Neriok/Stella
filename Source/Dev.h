@@ -4,9 +4,10 @@
 #include "TypeTraits.h"
 #include "Collections/Array.h"
 #include "Collections/ICollection.h"
-#include <exception.h>
+#include "Memory/Allocator.h"
 #include "Memory/SharedPointer.h"
-//#include <initializer_list>
+#include <initializer_list>
+#include <exception.h>
 
 using namespace Stella;
 using namespace Stella::Collections;
@@ -32,7 +33,7 @@ namespace Development
 	public:
 
 		/**
-		   @resume Initializes a new empty Vector<T> instance.
+		   Initializes a new empty Vector<T> instance.
 		*/
 		Vector()
 			: count(0), capacity(0)
@@ -40,27 +41,26 @@ namespace Development
 		}
 
 		/**
-		   @resume Initializes a new Vector<T> instance with the given capacity.
+		   Initializes a new Vector<T> instance with the given capacity.
 		   @param  Capacity Initial capacity.
 		*/
 		Vector(Int32 capacity)
 		{
-
 		}
 
 		/**
-		   @resume Initializes a new Vector<T> instance that contains elements copied from other Vector<T>.
+		   Initializes a new Vector<T> instance that contains elements copied from other Vector<T>.
 		   @param  Other Instance to copty.
 		*/
 		Vector(const Vector& other)
 		{
-
 		}
 
 		/**
-		@resume Initializes a new Vector<T> instance with a raw array of elements.
-		@param  Pointer Address of the first element.
-		@param  Count   Number of elements contained in the array.
+		   Initializes a new Vector<T> instance with a raw array of elements.
+		   
+		   @param  Pointer Address of the first element.
+		   @param  Count   Number of elements contained in the array.
 		*/
 		Vector(const Array<T, 10> array)
 		{
@@ -68,26 +68,25 @@ namespace Development
 		}
 
 		/**
-		   @resume Initializes a new Vector<T> instance with a raw array of elements.
+		   Initializes a new Vector<T> instance with a raw array of elements.
+		   
 		   @param  Pointer Address of the first element.
 		   @param  Count   Number of elements contained in the array.
 		*/
 		Vector(const T* pointer, Int32 count)
 		{
-
 		}
 
 		/**
-		  @resume Initializes a new Vector<T> instance that adds elements contained in the initializer list. 
-		  @param  InitializerList Elements to add.
+		   Initializes a new Vector<T> instance that adds elements contained in the initializer list. 		  
+		   @param  InitializerList Elements to add.
 		*/
 		Vector(std::initializer_list<T> initializerList)
 		{
-
 		}
 		
 		/**
-		   @resume Destroys the Vector<T> instance.	
+		   Destroys the Vector<T> instance.	
 		*/
 		~Vector()
 		{
@@ -99,7 +98,7 @@ namespace Development
 	public:
 		
 		/**
-		   @resume Returns the number of elements contained in the Vector<T>.
+		   Returns the number of elements contained in the Vector<T>.
 		*/
 		Int32 Count() const
 		{
@@ -107,8 +106,8 @@ namespace Development
 		}
 
 		/**
-		   @resume Gets the internal capacity that the Vector<T> can contain before 
-		           rezising is requiered.
+		   Gets the internal capacity that the Vector<T> can contain before 
+		   rezising is requiered.
 		*/
 		Int32 GetCapacity() const
 		{
@@ -116,8 +115,9 @@ namespace Development
 		}
 
 		/**
-		   @resume Sets the internal capacity that the Vector<T> can contain before 
-		           rezising is requiered.
+		   Sets the internal capacity that the Vector<T> can contain before 
+		   rezising is requiered.
+		   
 		   @param  Capacity Number of elements that the Vector<T> can contain.
 		   @throws ArgumentOutOfRangeException, OutOfMemoryException
 		*/
@@ -176,7 +176,7 @@ namespace Development
 		template <typename ... TArguments>
 		Int32 Emplace(TArguments&& ... arguments)
 		{
-			return NULL;
+			return 0;
 		}
 
 		/*-----------------------------------------------------------------------
@@ -215,7 +215,7 @@ namespace Development
 		{
 		private:
 
-			const Vector<T, TAllocator>& vector;
+			Vector<T, TAllocator>& vector;
 			Int32 index;
 			Int32 version;
 
@@ -239,11 +239,10 @@ namespace Development
 					// @todo throw InvalidOperationException
 				}
 				index = vector.count + 1;
-				std::cout << "Hola";
 				return false;
 			}
 
-			T& GetCurrent() const
+			T& GetCurrent()
 			{
 				if (index == 0 || index == vector.count + 1)
 				{
@@ -251,7 +250,16 @@ namespace Development
 				}				
 				throw std::exception();
 				//return vector[index - 1];
-				//return ((T&)((T*)0));
+			}
+
+			const T& GetCurrent() const
+			{
+				if (index == 0 || index == vector.count + 1)
+				{
+					// @todo throw InvalidOperationException
+				}
+				throw std::exception();
+				//return vector[index - 1];
 			}
 
 			void Reset()

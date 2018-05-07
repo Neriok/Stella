@@ -117,7 +117,7 @@ namespace Stella::Collections
 			{
 				if (GetSize() == 0)
 				{
-					Size* new_pointer = (Size*)Memory::StaticAllocation(alloc_size, true);
+					Size* new_pointer = (Size*)MemoryF::StaticAllocation(alloc_size, true);
 
 					if (!new_pointer)
 					{
@@ -130,7 +130,7 @@ namespace Stella::Collections
 				}
 				else
 				{
-					void* new_pointer = (T*)Memory::StaticReallocation(pointer, alloc_size, true);
+					void* new_pointer = (T*)MemoryF::StaticReallocation(pointer, alloc_size, true);
 
 					if (!new_pointer)
 					{
@@ -156,7 +156,7 @@ namespace Stella::Collections
 					((T*)(&(pointer[i])))->~T();
 				}
 
-				void* new_pointer = (T*)Memory::StaticReallocation(pointer, alloc_size, true);
+				void* new_pointer = (T*)MemoryF::StaticReallocation(pointer, alloc_size, true);
 
 				if (!new_pointer)
 				{
@@ -369,7 +369,7 @@ namespace Stella::Collections
 				data[i].~T();
 			}
 
-			Memory::StaticFree(ptr, true);
+			MemoryF::StaticFree(ptr, true);
 		}		
 
 		// ----------------------------------------------------------------------

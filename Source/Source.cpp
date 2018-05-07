@@ -16,33 +16,20 @@
 #include "Memory/Allocator.h"
 #include "Memory/SharedPointer.h"
 #include "Number.h"
+#include <array>
 
 using namespace Stella;
 
-template <typename T>
-class Temp
-{
-public:
-
-	T something;
-
-	void GetSomething() const
-	{
-		SharedPointer<T> sptr;
-		
-	}
-};
-
 int main()
 {
-	int integer = 3;
-	int* intptr = &integer;
-	SharedPointer<void> sptr;
-	//std::cout << sizeof(void) << std::endl;
+	Array<int, 3> n = { 1, 2, 3 };
 
-	/*Development::Vector<int, int> k;
-	SharedPointer<IEnumerator<int>> enumerator = k.GetEnumerator();
-	enumerator->MoveNext();*/
+	SharedPointer<IEnumerator<int>> e = n.GetEnumerator();
+
+	while (e->MoveNext())
+	{		
+		std::cout << e->GetCurrent() << std::endl;
+	}
 
 	getchar();
 	return 0;
