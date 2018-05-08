@@ -209,6 +209,15 @@ namespace Stella::Collections
 				return false;
 			}
 
+			T& GetCurrent() 
+			{
+				if (index == 0 || index == N + 1)
+				{
+					// @todo throw InvalidOperationException
+				}
+				return array[index - 1];
+			}
+
 			const T& GetCurrent() const
 			{
 				if (index == 0 || index == N + 1)
