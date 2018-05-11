@@ -1,36 +1,58 @@
 #pragma once
 #include "Typedef.h"
-#include "IEnumerable.h"
+#include "IIterable.h"
 #include <initializer_list>
 
 namespace Stella::Collections
 {
 	template <class T, Size N>
-	class Array : public IEnumerable<T>
+	class Array : public IIterable<T>
 	{
 		/*-----------------------------------------------------------------------
 		                                 Fields
 		-----------------------------------------------------------------------*/
-	public:
+	private:
 
 		T elements[N];
 
 		/*-----------------------------------------------------------------------
 		                       Constructors & Destructors
 		-----------------------------------------------------------------------*/	
-	public:
+	public:				
 
-		Array(std::initializer_list<T> initializerList)
+		inline Array() 
 		{
-			if (initializerList.size() != N)
-			{
-				//@todo throw ArgumentOutOfRangeException
-				return;
-			}
+		} 
+
+		inline Array(const T* pointer)
+			: Array(pointer, N)
+		{			
+		}
+
+		FORCE_INLINE Array(const T* pointer, Size count)
+		{
+			if (count > N)
+				return; // @todo throw ArgumentOutOfRangeException
+
 			for (int i = 0; i < N; i++)
 			{
-				elements[i] = *(initializerList.begin() + i);
+				if (i < count)
+				{
+					elements[i] = pointer[i];
+					continue;
+				}
+				elements[i] = NULL;
 			}
+		}
+
+		inline Array(const Array<const T, N>& constArray)
+			: Array(constArray.elements, N)
+		{
+		}
+
+		inline Array(std::initializer_list<T> initializerList)
+			: Array(initializerList.begin(), initializerList.size())
+		{
 		}
 				
 		/*-----------------------------------------------------------------------
@@ -46,6 +68,16 @@ namespace Stella::Collections
 		Size Count() const
 		{
 			return N;
+		}
+
+		T* GetData()
+		{
+			return elements;
+		}
+
+		const T* GetData() const
+		{
+			return elements;
 		}
 		
 		T* Begin()
@@ -96,7 +128,7 @@ namespace Stella::Collections
 			}
 		}
 
-		void Swap(const Array<T, N> other)
+		void Swap(const Array<T, N>& other)
 		{
 			for (int i = 0; i < N; i++)
 			{
@@ -170,21 +202,21 @@ namespace Stella::Collections
 		}
 
 		/*-----------------------------------------------------------------------
-		                               IEnumerable
+		                                IIterable
 		-----------------------------------------------------------------------*/
 	public:
 
-		SharedPointer<IEnumerator<T>> GetEnumerator() const
+		SharedPointer<IIterator<T>> GetIterator() const
 		{
-			return SharedPointer<IEnumerator<T>>((IEnumerator<T>*) new ArrayEnumerator(*this));
+			return new ArrayIterator(*this);
 		}
 
 		/*-----------------------------------------------------------------------
-		                              ArrayEnumerator
+		                              ArrayIterator
 		-----------------------------------------------------------------------*/
 	private:
 
-		class ArrayEnumerator : IEnumerator<T>
+		class ArrayIterator : public IIterator<T>
 		{
 		private:
 			
@@ -193,7 +225,7 @@ namespace Stella::Collections
 
 		public:
 
-			ArrayEnumerator(const Array<T, N>& array)
+			ArrayIterator(const Array<T, N>& array)
 				: array(array), index(0)
 			{
 			}
@@ -209,9 +241,17 @@ namespace Stella::Collections
 				return false;
 			}
 
-			T& GetCurrent() 
+			bool HasCurrent() const
 			{
 				if (index == 0 || index == N + 1)
+					return false;
+
+				return true;
+			}
+
+			T& GetCurrent() 
+			{
+				if (!HasCurrent())
 				{
 					// @todo throw InvalidOperationException
 				}
@@ -248,5 +288,13 @@ namespace Stella::Collections
 		{
 			return 0;
 		}
+	};
+
+	template <class T, Size N>
+	class Array <const T, N>
+	{
+	public:
+
+		T elements[N];
 	};
 }

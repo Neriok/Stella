@@ -1,11 +1,11 @@
 #pragma once
 #include "Typedef.h"
-#include "IEnumerable.h"
+#include "IIterable.h"
 
 namespace Stella::Collections
 {
 	template <typename T>
-	class ICollection : IEnumerable<T>
+	class ICollection : IIterable<T>
 	{
 	public:
 		virtual ~ICollection() {}

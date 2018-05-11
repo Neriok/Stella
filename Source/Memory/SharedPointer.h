@@ -12,7 +12,7 @@ namespace Stella::Memory
 		-----------------------------------------------------------------------*/
 	private:
 
-			T* object;
+		T* object;
 
 		/*-----------------------------------------------------------------------
 		                       Constructors & Destructors
@@ -23,7 +23,7 @@ namespace Stella::Memory
 		{
 		}
 
-		inline explicit SharedPointer(T* object)
+		inline SharedPointer(T* object)
 				: object(object)
 		{ 
 		}

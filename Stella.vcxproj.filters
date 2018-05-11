@@ -10,16 +10,13 @@
     <Filter Include="Source\IO">
       <UniqueIdentifier>{f303f33b-9afd-4ff6-98ad-b0672e551a9b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Reflection">
-      <UniqueIdentifier>{a926e891-9b07-4aad-895c-890c17d315d0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Data">
       <UniqueIdentifier>{7c7016f7-155c-4902-8c91-97b223dc1222}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Memory">
       <UniqueIdentifier>{397c4cf9-a9c3-404e-956d-24cfee2daef7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Thread">
+    <Filter Include="Source\Threading">
       <UniqueIdentifier>{9b102974-2b3e-4ffe-a09a-62a4b73edfbc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -87,12 +84,6 @@
     <ClInclude Include="Source\Collections\ICollection.h">
       <Filter>Source\Collections</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Collections\IEnumerable.h">
-      <Filter>Source\Collections</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Collections\IEnumerator.h">
-      <Filter>Source\Collections</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Memory\SharedReference.h">
       <Filter>Source\Memory</Filter>
     </ClInclude>
@@ -110,6 +101,12 @@
     </ClInclude>
     <ClInclude Include="Source\Number.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\IIterable.h">
+      <Filter>Source\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collections\IIterator.h">
+      <Filter>Source\Collections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

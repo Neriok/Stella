@@ -3,9 +3,9 @@
 
 namespace Stella
 {
-	//---------------------------------------------------------------------
+	// ---------------------------------------------------------------------
 	// -- Base types 
-	//---------------------------------------------------------------------
+	// ---------------------------------------------------------------------
 
 	// Boolean type
 	typedef bool                Boolean;  // 8-bit bool (Memory cannot address a single bit)
@@ -21,7 +21,7 @@ namespace Stella
 	typedef signed short int    Int16;	  // 16-bit signed
 	typedef signed int	 	    Int32;	  // 32-bit signed
 	typedef signed long long    Int64;	  // 64-bit signed
-
+	
 	// Floating-point types
 	typedef float               Float;    // 32-bit floating-point
 	typedef float               Single;   // 32-bit floating-point
@@ -48,10 +48,12 @@ namespace Stella
 	// -- Generic definitions
 	//---------------------------------------------------------------------
 
-	#define NULL         0
-	#define NULLPTR      nullptr
-	#define STDCALL		 __stdcall						
-	#define INLINE       inline
-	#define FORCE_INLINE __forceinline
+	#define NULL            0
+	#define NULLPTR         nullptr
+	#define STDCALL		    __stdcall						
+	#define INLINE          inline
+	#define FORCE_INLINE    __forceinline
+    #define CONST_EXPRESION constexpr
+    #define CONST           const
 
 }

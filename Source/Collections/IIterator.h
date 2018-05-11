@@ -3,11 +3,12 @@
 namespace Stella::Collections
 {
 	template <typename T>
-	class IEnumerator
+	class IIterator
 	{
 	public:
-		virtual ~IEnumerator() {}
+		virtual ~IIterator() {}
 		virtual bool MoveNext() = 0;
+		virtual bool HasCurrent() const = 0;
 		virtual T& GetCurrent() = 0;
 		virtual const T& GetCurrent() const = 0;
 		virtual void Reset() = 0;

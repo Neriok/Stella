@@ -62,7 +62,8 @@ namespace Development
 		   @param  Pointer Address of the first element.
 		   @param  Count   Number of elements contained in the array.
 		*/
-		Vector(const Array<T, 10> array)
+		template <Size N>
+		Vector(const Array<T, N> array)
 		{
 			std::cout << "Hola!";
 		}
@@ -79,6 +80,7 @@ namespace Development
 
 		/**
 		   Initializes a new Vector<T> instance that adds elements contained in the initializer list. 		  
+		   
 		   @param  InitializerList Elements to add.
 		*/
 		Vector(std::initializer_list<T> initializerList)
@@ -198,20 +200,21 @@ namespace Development
 		Vector& operator+=(std::initializer_list<T> initializer);*/
 
 		/*-----------------------------------------------------------------------
-		                               IEnumerable
+		                               IIterable
 		-----------------------------------------------------------------------*/
-		public:
+	public:
 
-		SharedPointer<IEnumerator<T>> GetEnumerator() const
+		SharedPointer<IIterator<T>> GetIterator() const
 		{		
-			return SharedPointer<IEnumerator<T>>((IEnumerator<T>*) (new VectorEnumerator(*this)));
+			return new VectorIterator(*this);
 		}
 
 		/*-----------------------------------------------------------------------
-		                             VectorEnumerator
+		                             VectorIterator
 		-----------------------------------------------------------------------*/
-		
-		class VectorEnumerator : public IEnumerator<T> 
+	private:
+
+		class VectorIterator : public IIterator<T> 
 		{
 		private:
 
@@ -221,7 +224,7 @@ namespace Development
 
 		public:
 
-			VectorEnumerator(const Vector<T, TAllocator>& vector)
+			VectorIterator(const Vector<T, TAllocator>& vector)
 				: vector(vector), index(0), version(vector.count)
 			{
 			}
@@ -242,9 +245,14 @@ namespace Development
 				return false;
 			}
 
+			bool HasCurrent() const
+			{
+				return !(index == 0 || index == vector.count + 1);
+			}
+
 			T& GetCurrent()
 			{
-				if (index == 0 || index == vector.count + 1)
+				if (!HasCurrent())
 				{
 					// @todo throw InvalidOperationException
 				}				
