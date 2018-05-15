@@ -139,8 +139,10 @@
     <ClInclude Include="Source\Collections\InitializerList.h" />
     <ClInclude Include="Source\Collections\Map.h" />
     <ClInclude Include="Source\Collections\Vector.h" />
+    <ClInclude Include="Source\Console.h" />
     <ClInclude Include="Source\Delegate.h" />
     <ClInclude Include="Source\Dev.h" />
+    <ClInclude Include="Source\Dummy.h" />
     <ClInclude Include="Source\Error.h" />
     <ClInclude Include="Source\Exception.h" />
     <ClInclude Include="Source\Int32.h" />
@@ -162,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\ArgumentException.cpp" />
+    <ClCompile Include="Source\Console.cpp" />
     <ClCompile Include="Source\Exception.cpp" />
     <ClCompile Include="Source\Int32.cpp" />
     <ClCompile Include="Source\Math.cpp" />

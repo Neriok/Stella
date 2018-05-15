@@ -52,8 +52,8 @@ namespace Stella
 	#define NULLPTR         nullptr
 	#define STDCALL		    __stdcall						
 	#define INLINE          inline
-	#define FORCE_INLINE    __forceinline
-    #define CONST_EXPRESION constexpr
+	#define FORCEINLINE     __forceinline
+    #define CONSTEXPRESION  constexpr
     #define CONST           const
 
 }

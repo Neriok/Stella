@@ -13,7 +13,7 @@ using namespace Stella;
 using namespace Stella::Collections;
 using namespace Stella::Memory;
 
-namespace Development
+namespace Dev
 {
 	template <typename T, typename TAllocator>
 	class Vector : public ICollection<T>
@@ -63,7 +63,7 @@ namespace Development
 		   @param  Count   Number of elements contained in the array.
 		*/
 		template <Size N>
-		Vector(const Array<T, N> array)
+		Vector(const Array<T, N>& array)
 		{
 			std::cout << "Hola!";
 		}
@@ -218,7 +218,7 @@ namespace Development
 		{
 		private:
 
-			Vector<T, TAllocator>& vector;
+			const Vector<T, TAllocator> vector;
 			Int32 index;
 			Int32 version;
 

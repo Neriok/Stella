@@ -6,7 +6,7 @@
 #include "ArgumentException.h"
 #include "Exception.h"
 #include "Collections/Array.h"
-#include "Collections\InitializerList.h"
+#include "Collections/InitializerList.h"
 #include "TypeTraits.h"
 #include "Dev.h"
 #include "Collections/ICollection.h"
@@ -21,39 +21,11 @@
 
 using namespace Stella;
 
-class Dummy
-{
-public:
-
-	Dummy()
-	{
-		std::cout << "Initializing dummy ..." << std::endl;
-	}
-
-	~Dummy()
-	{
-		std::cout << "Destroying dummy ..." << std::endl;
-	}
-};
-
-void Arrays()
-{
-	//Dummy n[3];
-	//Array<Dummy, 3> n;
-	int arr[3] = { 1, 3, 4 };
-
-	std::array<int, 3> n = arr;
-
-	Array<int, 3> k = arr;
-	
-	std::cout << &n[0] << std::endl;
-	std::cout << &n[1] << std::endl;
-	std::cout << &n[2] << std::endl;
-}
-
 int main()
 {
-	Arrays();
+	Array<int, 3> k = { 1,2,3 };
+	Dev::Vector<int, int> n = k;
+	
 
 	getchar();
 	return 0;

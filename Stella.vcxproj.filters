@@ -108,6 +108,12 @@
     <ClInclude Include="Source\Collections\IIterator.h">
       <Filter>Source\Collections</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Dummy.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Console.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Source.cpp">
@@ -132,6 +138,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Number.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Console.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

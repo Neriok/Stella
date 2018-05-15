@@ -20,16 +20,9 @@ namespace Stella::Collections
 		-----------------------------------------------------------------------*/	
 	public:				
 
-		inline Array() 
-		{
-		} 
-
-		inline Array(const T* pointer)
-			: Array(pointer, N)
-		{			
-		}
-
-		FORCE_INLINE Array(const T* pointer, Size count)
+		FORCEINLINE Array() = default;
+				
+		FORCEINLINE Array(const T* pointer, Size count)
 		{
 			if (count > N)
 				return; // @todo throw ArgumentOutOfRangeException
@@ -45,12 +38,12 @@ namespace Stella::Collections
 			}
 		}
 
-		inline Array(const Array<const T, N>& constArray)
+		FORCEINLINE Array(const Array<const T, N>& constArray)
 			: Array(constArray.elements, N)
 		{
 		}
 
-		inline Array(std::initializer_list<T> initializerList)
+		FORCEINLINE Array(std::initializer_list<T> initializerList)
 			: Array(initializerList.begin(), initializerList.size())
 		{
 		}
@@ -243,10 +236,7 @@ namespace Stella::Collections
 
 			bool HasCurrent() const
 			{
-				if (index == 0 || index == N + 1)
-					return false;
-
-				return true;
+				return index > 0 && index < N + 1;
 			}
 
 			T& GetCurrent() 
